@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  background: linear-gradient(to right, #57c1eb 40%, #246fa8 80%);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f5f5;
+}

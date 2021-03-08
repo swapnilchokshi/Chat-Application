@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <div class="row nav-bar" style="padding-top:12px;">
+  <br>
+  <br>
+  <div class="col-2">
+    <input type="text" name="IP" [(ngModel)]="username" placeholder="Enter username" size="20">
+  </div>
+  <br>
+  <div class="col-2">
+    <input type="text" name="IP" [(ngModel)]="channelName" placeholder="Enter channel" size="20">
+  </div>
+<div class="col-1">
+  <button type="button" id="join" class="btn btn-primary" (click)="join(channelName, username)">Join</button>
+</div>
+<br>
+<br>
+    <!--button type="button" class="btn btn-secondary" (click)="leave()">Leave</button-->
+  </div>
+</div>
+
+<div class="container-fluid" id="chat-container">
+  <div class="row">
+
+    <div class="col-md-12 middle">
+      <div class="row">
+        <div class="col-md-4 middle-up">
+          <img class="img-responsive" id="img" src="{{avatar}}"  alt="user image" height="90%" width="80%">
+        </div>
+
+        <div class="col-md-1">
+        </div>
+
+        <div class="col-md-7 info">
+          <div class="row">
+            <h2 style="color: #565360">{{ username }}</h2>
+          </div>
+            <div class="row">
+              <button type="button" id="place">-Button-</button>
+              <button type="button" id="uploadimage" name="img"><i class="fa fa-paperclip"> Upload</i></button>
+              <!--input type="file" accept="image/*" capture="capture"-->
+            </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="box">
+          <div *ngFor="let each of messageArray">
+            <div class="message-row you-message">
+              <div class="message-info">
+                <img id="messageAvatar" src="{{each.avatar}}"><strong>{{each.user}}</strong> {{each.date | date:'shortTime'}}
+              </div>
+              <div id="bottom" class="message-content-text" *ngIf="each.message !== '' ">
+                {{each.message}}
+              </div>
+              <div id="bottom" class="message-content-gif" *ngIf="each.gif !== '' ">
+                <img src="{{each.gif}}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--button type="button" (click)="scrollTo('bottom')" style=""><i class="fa fa-arrow-down" aria-hidden="true"></i></button-->
+      </div>
+      <section>
+        <emoji-mart class="emoji-mart" set="emojione" (emojiSelect)="addEmoji($event)" *ngIf="showEmojiPicker" [showPreview]="false" [set]="apple" [sheetSize]="64"></emoji-mart>
+        <div class="giphy-search" *ngIf="showGiphyModule">
+          <app-search></app-search>
+          <app-gifs (click)="sendGif(channelName, username)"></app-gifs>
+        </div>
+      </section>
+
+      <div class="row middle-down">
+          <div class="col-md-9 outer">
+            <button type="button" id="capture" class="toggle-emoji" (click)="toggleEmojiPicker()"><i class="fa fa-smile-o" style="font-size:25px; color: black;"></i></button>
+            <input type="text" id="message" [(ngModel)]="sendmessage" placeholder=" Enter your message" size="45" (keyup.enter)="sendMessage(channelName, username, sendmessage)" />
+            <button type="button" id="gif" (click)="toggleGiphy()">GIF</button>
+          </div>
+
+          <div class="col-md-3" style="padding: 5px 5px;">
+            <button type="button" id="send" name="Send" (click)="sendMessage(channelName, username, sendmessage)"><i class="fa fa-paper-plane" style="font-size:20px;"></i> Send</button>
+          </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

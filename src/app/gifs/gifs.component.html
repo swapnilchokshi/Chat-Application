@@ -1,0 +1,8 @@
+<!--app-search></app-search-->
+<div class="gifs">
+  <div class="gif" *ngFor="let gif of gifs">
+    <img src="{{ gif.images.downsized.url }}" (click)="clickGif(gif.images.original.url)" alt="Gifs Images">
+  </div>
+</div>
+
+<!--(click)="sendGif(gif.images.original.url)"-->
