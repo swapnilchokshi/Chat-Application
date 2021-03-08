@@ -1,5 +1,5 @@
-## Chat-Application
-# A real-time group chat application using Angular, NodeJS and socket.io
+# Chat-Application
+## A real-time group chat application using Angular, NodeJS and socket.io
 
 Building a real time chat application will be the starting point for developing many applications with socket connections which will involve two way communication among server and client.
 
